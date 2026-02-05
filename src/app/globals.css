@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --stone-50: #fafaf9;
+  --stone-100: #f5f5f4;
+  --stone-200: #e7e5e4;
+  --stone-300: #d6d3d1;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-900: #1c1917;
+  
+  --cream-50: #fdfcf8;
+  --cream-100: #faf8f3;
+  --cream-200: #f5f0e6;
+  --cream-300: #ede4d3;
+  
+  --earth-500: #9c8268;
+  --earth-600: #7d6550;
+  --earth-700: #655244;
+  
+  --sage-400: #95a27f;
+  --sage-500: #7a8763;
+  
+  --charcoal-900: #3d3d3d;
+  --charcoal-950: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--cream-50);
+  color: var(--stone-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--stone-900);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--stone-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--stone-500);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--earth-500);
+  color: white;
+}
+
+/* Stone Texture Background */
+.stone-texture {
+  background-color: var(--cream-50);
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(156, 130, 104, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(122, 135, 99, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 113, 108, 0.02) 0%, transparent 30%);
+}
+
+/* Dome Shape */
+.dome-shape {
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.arch-shape {
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+}
+
+/* Soft Shadow */
+.shadow-dome {
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Overlay */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-stone-800 text-white font-medium rounded-lg transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-stone-700 shadow-lg;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center px-6 py-3 border-2 border-stone-800 text-stone-800 font-medium rounded-lg transition-all duration-300;
+}
+
+.btn-outline:hover {
+  @apply bg-stone-800 text-white;
+}
+
+.btn-whatsapp {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-[#25D366] text-white font-medium rounded-lg transition-all duration-300;
+}
+
+.btn-whatsapp:hover {
+  @apply bg-[#128C7E] shadow-lg;
+  transform: translateY(-2px);
+}
+
+/* Form Styles */
+.form-input {
+  @apply w-full px-4 py-3 bg-white border border-stone-200 rounded-lg text-stone-800 placeholder-stone-400 transition-all duration-300;
+}
+
+.form-input:focus {
+  @apply border-stone-500 outline-none ring-2 ring-stone-200;
+}
+
+/* Card Styles */
+.card-stone {
+  @apply bg-white rounded-2xl shadow-soft overflow-hidden transition-all duration-300;
+}
+
+.card-stone:hover {
+  @apply shadow-dome;
+}
+
+/* Section Spacing */
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+/* Container */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Typography */
+.heading-xl {
+  @apply text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight;
+}
+
+.heading-lg {
+  @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium leading-tight;
+}
+
+.heading-md {
+  @apply text-2xl md:text-3xl font-serif font-medium;
+}
+
+.heading-sm {
+  @apply text-xl md:text-2xl font-serif font-medium;
+}
+
+.body-lg {
+  @apply text-lg leading-relaxed;
+}
+
+.body-md {
+  @apply text-base leading-relaxed;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--earth-600) 0%, var(--sage-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* WhatsApp Float Button */
+.whatsapp-float {
+  @apply fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg transition-all duration-300;
+}
+
+.whatsapp-float:hover {
+  @apply bg-[#128C7E] shadow-xl;
+  transform: scale(1.1);
+}
+
+/* Lightbox Customization */
+.yarl__container {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .heading-xl {
+    @apply text-3xl;
+  }
+  
+  .heading-lg {
+    @apply text-2xl;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
